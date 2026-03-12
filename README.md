@@ -1,26 +1,23 @@
-# SpringBootJPAHibernate
-This repo is for SpringBootJPAHibernate knowledge and Tutorials
-
-
 # JPA/Hibernate Deep Dive: Performance Optimization in Subzone Search
 
 ## 📚 Table of Contents
 
-1. [Introduction](#1-introduction)
-2. [Understanding JPA/Hibernate Fundamentals](#understanding-jpahibernate-fundamentals)
-3. [The Classic N+1 Problem](#the-classic-n1-problem)
-4. [The Cartesian Product Problem](#the-cartesian-product-problem)
-5. [Pagination Nightmare with JOIN FETCH](#pagination-nightmare-with-join-fetch)
-6. [Lazy Loading vs Eager Loading](#lazy-loading-vs-eager-loading)
-7. [Filtering with JOIN FETCH and WHERE Clauses](#filtering-with-join-fetch-and-where-clauses)
-8. [Sorting on Child Entity Fields](#sorting-on-child-entity-fields)
-9. [The Two-Query Solution](#the-two-query-solution)
-10. [Complete Example Walkthrough](#complete-example-walkthrough)
-11. [Best Practices & Patterns](#best-practices--patterns)
+1. [Introduction](#introduction)
+2. [Understanding JPA/Hibernate Fundamentals](#fundamentals)
+3. [The Classic N+1 Problem](#n1-problem)
+4. [The Cartesian Product Problem](#cartesian-product)
+5. [Pagination Nightmare with JOIN FETCH](#pagination-nightmare)
+6. [Lazy Loading vs Eager Loading](#lazy-vs-eager)
+7. [Filtering with JOIN FETCH and WHERE Clauses](#filtering-with-join-fetch)
+8. [Sorting on Child Entity Fields](#sorting-challenges)
+9. [The Two-Query Solution](#two-query-solution)
+10. [Complete Example Walkthrough](#complete-example)
+11. [Best Practices & Patterns](#best-practices)
 
 ---
 
-## 1. Introduction {#introduction}
+## 1. Introduction
+<a id="introduction"></a>
 
 This document provides a deep understanding of JPA/Hibernate behavior and the sophisticated performance optimization techniques implemented in the WMS Location Count subzone search feature by Shalinee Chauhan.
 
@@ -43,7 +40,8 @@ CountRequest (1)
 
 ---
 
-## 2. Understanding JPA/Hibernate Fundamentals {#fundamentals}
+## 2. Understanding JPA/Hibernate Fundamentals
+<a id="fundamentals"></a>
 
 ### How Hibernate Maps Entities to SQL
 
@@ -111,7 +109,8 @@ public class CountLayoutLocationEntity {
 
 ---
 
-## 3. The Classic N+1 Problem {#n1-problem}
+## 3. The Classic N+1 Problem
+<a id="n1-problem"></a>
 
 ### The Problem Explained
 
@@ -193,7 +192,8 @@ WHERE subzone.count_request_key = ?;
 
 ---
 
-## 4. The Cartesian Product Problem {#cartesian-product}
+## 4. The Cartesian Product Problem
+<a id="cartesian-product"></a>
 
 ### What is a Cartesian Product?
 
@@ -303,7 +303,8 @@ Hibernate **cannot paginate** in the database when you use JOIN FETCH with multi
 
 ---
 
-## 5. Pagination Nightmare with JOIN FETCH {#pagination-nightmare}
+## 5. Pagination Nightmare with JOIN FETCH
+<a id="pagination-nightmare"></a>
 
 ### The Pagination Problem
 
@@ -417,7 +418,8 @@ The count query returns the number of **rows** (including duplicates), not the n
 
 ---
 
-## 6. Lazy Loading vs Eager Loading {#lazy-vs-eager}
+## 6. Lazy Loading vs Eager Loading
+<a id="lazy-vs-eager"></a>
 
 ### Lazy Loading (Default for Collections)
 
@@ -481,7 +483,8 @@ private Set<CountAssignedUserEntity> countAssignedUserEntities;
 
 ---
 
-## 7. Filtering with JOIN FETCH and WHERE Clauses {#filtering-with-join-fetch}
+## 7. Filtering with JOIN FETCH and WHERE Clauses
+<a id="filtering-with-join-fetch"></a>
 
 ### The Filtering Confusion
 
@@ -1057,7 +1060,8 @@ List<CountAssignedUserEntity> getUsersBySubzoneKeys(
 
 ---
 
-## 8. Sorting on Child Entity Fields {#sorting-challenges}
+## 8. Sorting on Child Entity Fields
+<a id="sorting-challenges"></a>
 
 ### The Sorting Challenge
 
@@ -1104,7 +1108,8 @@ LIMIT 10 OFFSET 10;
 
 ---
 
-## 8. The Two-Query Solution {#two-query-solution}
+## 8. The Two-Query Solution
+<a id="two-query-solution"></a>
 
 ### The Elegant Solution by Shalinee
 
@@ -1340,7 +1345,8 @@ WHERE (? IS NULL OR action.count_assigned_user_key IN (:userKeys))
 
 ---
 
-## 9. Complete Example Walkthrough {#complete-example}
+## 9. Complete Example Walkthrough
+<a id="complete-example"></a>
 
 ### Scenario
 - **Database**: 47 subzones match criteria
@@ -1565,7 +1571,8 @@ Page<CountLayoutSubzone> dtoPage = subzonePage.map(baseEntity -> {
 
 ---
 
-## 10. Best Practices & Patterns {#best-practices}
+## 10. Best Practices & Patterns
+<a id="best-practices"></a>
 
 ### ✅ DO: Use Projections for Sorting
 
@@ -1763,4 +1770,3 @@ Hibernate:
 **Author**: Deep Dive Analysis based on Shalinee Chauhan's Implementation
 **Date**: 2026-03-12
 **Version**: 2.0 (Added comprehensive filtering section)
-
