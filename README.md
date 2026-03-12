@@ -6,17 +6,17 @@ This repo is for SpringBootJPAHibernate knowledge and Tutorials
 
 ## 📚 Table of Contents
 
-1. [Introduction](#introduction)
-2. [Understanding JPA/Hibernate Fundamentals](#fundamentals)
-3. [The Classic N+1 Problem](#n1-problem)
-4. [The Cartesian Product Problem](#cartesian-product)
-5. [Pagination Nightmare with JOIN FETCH](#pagination-nightmare)
-6. [Lazy Loading vs Eager Loading](#lazy-vs-eager)
-7. [Filtering with JOIN FETCH and WHERE Clauses](#filtering-with-join-fetch)
-8. [Sorting on Child Entity Fields](#sorting-challenges)
-9. [The Two-Query Solution](#two-query-solution)
-10. [Complete Example Walkthrough](#complete-example)
-11. [Best Practices & Patterns](#best-practices)
+1. [Introduction](#1-introduction)
+2. [Understanding JPA/Hibernate Fundamentals](#understanding-jpahibernate-fundamentals)
+3. [The Classic N+1 Problem](#the-classic-n1-problem)
+4. [The Cartesian Product Problem](#the-cartesian-product-problem)
+5. [Pagination Nightmare with JOIN FETCH](#pagination-nightmare-with-join-fetch)
+6. [Lazy Loading vs Eager Loading](#lazy-loading-vs-eager-loading)
+7. [Filtering with JOIN FETCH and WHERE Clauses](#filtering-with-join-fetch-and-where-clauses)
+8. [Sorting on Child Entity Fields](#sorting-on-child-entity-fields)
+9. [The Two-Query Solution](#the-two-query-solution)
+10. [Complete Example Walkthrough](#complete-example-walkthrough)
+11. [Best Practices & Patterns](#best-practices--patterns)
 
 ---
 
